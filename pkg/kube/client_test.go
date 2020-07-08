@@ -301,7 +301,7 @@ func TestPerform(t *testing.T) {
 }
 
 func TestReal(t *testing.T) {
-	t.Skip("This is a live test, comment this line to run")
+	// t.Skip("This is a live test, comment this line to run")
 	c := New(nil)
 	resources, err := c.Build(strings.NewReader(guestbookManifest), false)
 	if err != nil {
@@ -384,7 +384,7 @@ spec:
     tier: backend
     role: master
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-master
@@ -424,7 +424,7 @@ spec:
     tier: backend
     role: slave
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-slave
@@ -464,7 +464,7 @@ spec:
     app: guestbook
     tier: frontend
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
@@ -491,7 +491,7 @@ spec:
 `
 
 const namespacedGuestbookManifest = `
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
